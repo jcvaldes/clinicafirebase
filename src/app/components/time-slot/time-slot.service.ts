@@ -3,8 +3,8 @@ import { TimeSlot } from './time-slot.model';
 @Injectable({
   providedIn: 'root'
 })
-export class NameService {
-  init(): TimeSlot[] {
+export class TimeSlotService {
+  getTimeSlot(): TimeSlot[] {
     return [
       { day: 1, timeStart: null, timeEnd: null },
       { day: 2, timeStart: null, timeEnd: null },

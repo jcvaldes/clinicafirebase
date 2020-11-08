@@ -3,6 +3,7 @@ import { FormGroup, FormControl, FormArray } from '@angular/forms';
 import { TimeSlot } from './time-slot.model';
 import { MatTableDataSource } from '@angular/material/table';
 import { SelectionModel } from '@angular/cdk/collections';
+import { TimeSlotService } from './time-slot.service';
 
 @Component({
   selector: 'app-time-slot',
@@ -14,9 +15,11 @@ export class TimeSlotComponent implements OnInit {
   dataSource: MatTableDataSource<TimeSlot>;
   displayedColumns: string[] = ['day', 'timeStart', 'timeEnd'];
   selection = new SelectionModel<TimeSlot>(true, []);
-  constructor() { }
+  constructor(private timeSlotService: TimeSlotService) { }
   ngOnInit(): void {
     this.createForm();
+    const timeslot = this.timeSlotService.getTimeSlot();
+    this.dataSource = new MatTableDataSource<TimeSlot>(timeslot);
   }
   createForm() {
     debugger
